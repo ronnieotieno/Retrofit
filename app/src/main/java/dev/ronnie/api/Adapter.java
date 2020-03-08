@@ -36,18 +36,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         TeamList team = mList.get(i);
 
 
-        if (team.active != null){
-            adapterViewHolder.active.setText(team.active.toString());
-        }
+        adapterViewHolder.active.setText(team.active.toString());
 
         adapterViewHolder.details.setText(team.details);
         adapterViewHolder.group.setText(team.group);
         adapterViewHolder.key.setText(team.key);
 
-        if (team.title != null){
-           // adapterViewHolder.title.setText(team.title.toString());
-        }
-
+        adapterViewHolder.title.setText(team.title.toString());
 
 
     }
