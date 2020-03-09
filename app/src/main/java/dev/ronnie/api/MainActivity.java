@@ -21,10 +21,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     public static final String BASE_URL = " https://api.the-odds-api.com/";
-
     private Data data;
     private RecyclerView recyclerView;
-   // private List<TeamList> list;
+    private List<TeamList> list;
     private ApiInterface apiInterface;
     private String apiKey = "6eecad223784839864e6c3ac3abeb569";
 
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         data = new Data();
-     //   list = new ArrayList<>();
+        list = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
 
 
@@ -55,9 +54,10 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Data> call, Response<Data> response) {
 
                 if (response.body() != null) {
-                   // list = response.body().data;
-                    setupAdapter(response.body().data);
-                   // Toast.makeText(MainActivity.this, list.get(1).title, Toast.LENGTH_LONG).show();
+                    data = response.body();
+                    list = data.data;
+                    setupAdapter(list);
+                    Toast.makeText(MainActivity.this, list.get(1).title, Toast.LENGTH_LONG).show();
                 }
             }
 
